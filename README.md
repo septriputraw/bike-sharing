@@ -1,7 +1,7 @@
 # Submission Dicoding "Belajar Analisis Data dengan Python"
 
 ## Preview
-![Bike Sharing Dashboard Streamlit Preview](https://raw.githubusercontent.com/septriputraw/bike-sharing/main/preview.png)
+![Bike Sharing Dashboard Streamlit Preview]([https://raw.githubusercontent.com/septriputraw/bike-sharing/main/preview.png](https://github.com/septriputraw/data-analis/blob/main/preview.png))
 
 ## Project Analisis Data
 
