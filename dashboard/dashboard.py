@@ -117,7 +117,7 @@ ax.tick_params(axis='y', labelsize=20)
 ax.tick_params(axis='x', labelsize=15)
 st.pyplot(fig)
 
-st.subheader("pada jam berapa paling banyak dan paling sedikit disewa?")
+st.subheader("Pada jam berapa paling banyak dan paling sedikit disewa?")
 fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(35, 15))
 
 sns.barplot(x="hours", y="count_cr", data=sum_order_items_df.head(5), palette=["#D3D3D3", "#D3D3D3", "#90CAF9", "#D3D3D3", "#D3D3D3"], ax=ax[0])
@@ -138,7 +138,7 @@ ax[1].tick_params(axis='y', labelsize=35)
 ax[1].tick_params(axis='x', labelsize=30)
  
 st.pyplot(fig)
-st.subheader("musim apa yang paling banyak disewa?")
+st.subheader("Pada musim apa yang paling banyak disewa?")
 
 colors = ["#D3D3D3", "#D3D3D3", "#D3D3D3", "#90CAF9"]
 fig, ax = plt.subplots(figsize=(20, 10))
