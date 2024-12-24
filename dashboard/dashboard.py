@@ -41,8 +41,8 @@ def macem_season (day_df):
     season_df = day_df.groupby(by="season").count_cr.sum().reset_index() 
     return season_df
 
-days_df = pd.read_csv("dashboard/day_clean.csv")
-hours_df = pd.read_csv("dashboard/hour_clean.csv")
+days_df = pd.read_csv("dashboard/day_1.csv")
+hours_df = pd.read_csv("dashboard/hour_1.csv")
 
 datetime_columns = ["dteday"]
 days_df.sort_values(by="dteday", inplace=True)
@@ -63,11 +63,11 @@ max_date_hour = hours_df["dteday"].max()
 
 with st.sidebar:
     # Menambahkan logo perusahaan
-    st.image("https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/image1_hH9B4gs.jpg")
+    st.image("https://images.unsplash.com/photo-1455641374154-422f32e234cd?q=80&w=480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
     
         # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(
-        label='Pilih Rentang Waktu',
+        label='Pilih Rentang Waktu Data',
         min_value=min_date_days,
         max_value=max_date_days,
         value=[min_date_days, max_date_days])
@@ -93,17 +93,17 @@ col1, col2, col3 = st.columns(3)
  
 with col1:
     total_orders = day_df_count_2011.count_cr.sum()
-    st.metric("Total Sharing Bike", value=total_orders)
+    st.metric("Total Data Sharing Bike", value=total_orders)
 
 with col2:
     total_sum = reg_df.register_sum.sum()
-    st.metric("Total Registered", value=total_sum)
+    st.metric("Total Data Registered", value=total_sum)
 
 with col3:
     total_sum = cas_df.casual_sum.sum()
-    st.metric("Total Casual", value=total_sum)
+    st.metric("Total Data Casual", value=total_sum)
 
-st.subheader("Kinerja penjualan perusahaan dalam beberapa tahun terakhir")
+st.subheader("Performa penjualan dalam beberapa tahun terakhir")
 
 fig, ax = plt.subplots(figsize=(16, 8))
 ax.plot(
@@ -117,20 +117,20 @@ ax.tick_params(axis='y', labelsize=20)
 ax.tick_params(axis='x', labelsize=15)
 st.pyplot(fig)
 
-st.subheader("Pada jam berapa paling banyak dan paling sedikit disewa?")
+st.subheader("Pada saat jam berapa paling banyak dan paling sedikit sepeda disewa?")
 fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(35, 15))
 
 sns.barplot(x="hours", y="count_cr", data=sum_order_items_df.head(5), palette=["#D3D3D3", "#D3D3D3", "#90CAF9", "#D3D3D3", "#D3D3D3"], ax=ax[0])
 ax[0].set_ylabel(None)
 ax[0].set_xlabel("Hours (PM)", fontsize=30)
-ax[0].set_title("Jam dengan banyak penyewa sepeda", loc="center", fontsize=30)
+ax[0].set_title("Data Jam dengan banyak penyewa sepeda", loc="center", fontsize=30)
 ax[0].tick_params(axis='y', labelsize=35)
 ax[0].tick_params(axis='x', labelsize=30)
  
 sns.barplot(x="hours", y="count_cr", data=sum_order_items_df.sort_values(by="hours", ascending=True).head(5), palette=["#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3","#90CAF9"], ax=ax[1])
 ax[1].set_ylabel(None)
 ax[1].set_xlabel("Hours (AM)",  fontsize=30)
-ax[1].set_title("Jam dengan sedikit penyewa sepeda", loc="center", fontsize=30)
+ax[1].set_title("Data Jam dengan sedikit penyewa sepeda", loc="center", fontsize=30)
 ax[1].invert_xaxis()
 ax[1].yaxis.set_label_position("right")
 ax[1].yaxis.tick_right()
@@ -138,7 +138,7 @@ ax[1].tick_params(axis='y', labelsize=35)
 ax[1].tick_params(axis='x', labelsize=30)
  
 st.pyplot(fig)
-st.subheader("Pada musim apa yang paling banyak disewa?")
+st.subheader("Pada saat musim apa yang paling banyak sepeda disewa?")
 
 colors = ["#D3D3D3", "#D3D3D3", "#D3D3D3", "#90CAF9"]
 fig, ax = plt.subplots(figsize=(20, 10))
@@ -149,14 +149,14 @@ sns.barplot(
         palette=colors,
         ax=ax
     )
-ax.set_title("Grafik Antar Musim", loc="center", fontsize=50)
+ax.set_title("Data Grafik Antar Musim", loc="center", fontsize=50)
 ax.set_ylabel(None)
 ax.set_xlabel(None)
 ax.tick_params(axis='x', labelsize=35)
 ax.tick_params(axis='y', labelsize=30)
 st.pyplot(fig)
 
-st.subheader("Perbandingan Pengguna yang Registered dengan casual")
+st.subheader("Perbandingan Pengguna Penyewa Sepeda Registered dengan casual")
 
 labels = 'casual', 'registered'
 sizes = [18.8, 81.2]
